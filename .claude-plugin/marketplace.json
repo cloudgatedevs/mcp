@@ -12,7 +12,7 @@
     {
       "name": "cloudgate-builder",
       "source": "./plugins/cloudgate-builder",
-      "description": "Build and manage Cloudgate workflow-APIs (projects, endpoints, workflows) from Claude via the Cloudgate MCP, authenticated with OAuth."
+      "description": "Build and manage Cloudgate workflow-APIs (controllers, actions, workflows) from Claude via the Cloudgate MCP, authenticated with OAuth."
     }
   ]
 }

@@ -1,0 +1,10 @@
+# MCP registry publishing — never commit signing keys or the downloaded CLI
+key.pem
+mcp-publisher
+mcp-publisher.exe
+mcp-publisher*.tar.gz
+.mcppublisher
+
+# Local registry-publishing scripts (not for the repo)
+scripts/registry/
+pub.der

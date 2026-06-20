@@ -3,7 +3,7 @@
 Bundles three things so Cowork can build Cloudgate workflow-APIs:
 
 1. **MCP server `cloudgate`** (`.mcp.json`) — `mcp-remote` bridge to `/mcp/workflow`
-   (projects, endpoints, nodes, **SQLite databases**).
+   (controllers, actions, nodes, **SQLite databases**).
 2. **MCP server `cloudgate-data`** (`.mcp.json`) — same token, `/mcp/data`
    (Data Tables + SQLite tools).
 3. **Skill `cloudgate-build`** (`skills/cloudgate-build/`) — the playbook that makes
@@ -23,7 +23,7 @@ Update the URL too if your `/mcp` isn't at the ngrok address shown.
 
 ## Install
 Install the `.plugin` from Cowork's **Plugins** settings page. After install, start a
-**new** conversation and ask "List my Cloudgate projects" — it should call `list_projects`.
+**new** conversation and ask "List my Cloudgate controllers" — it should call `list_projects`.
 
 ## Alternative: direct remote URL
 If your environment provisions remote MCP servers (admin `managedMcpServers` or an org

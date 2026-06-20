@@ -7,7 +7,7 @@ directly from Claude (Cowork, Desktop chat, and web).
 
 | Plugin | Description |
 | --- | --- |
-| **cloudgate-builder** | Connects Claude to the Cloudgate MCP (`api.cloudgate.dev`) over OAuth and adds the `cloudgate-build` skill for creating projects, endpoints, workflow graphs, databases, and more. |
+| **cloudgate-builder** | Connects Claude to the Cloudgate MCP (`api.cloudgate.dev`) over OAuth and adds the `cloudgate-build` skill for creating controllers, actions, workflow graphs, databases, and more. |
 
 ## Install
 
@@ -18,7 +18,7 @@ directly from Claude (Cowork, Desktop chat, and web).
 3. Choose **Add from a repository** and enter this repo:
    `https://github.com/<your-org>/cloudgate-app-templates`
 4. Install **cloudgate-builder** from the marketplace.
-5. Start a chat and ask to list your Cloudgate projects — you'll be sent to
+5. Start a chat and ask to list your Cloudgate controllers — you'll be sent to
    `hub.cloudgate.dev` to sign in, then the tools become available.
 
 ### Claude Code

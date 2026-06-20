@@ -1,17 +1,20 @@
 ---
 name: cloudgate-build
 description: >
-  Build or edit a Cloudgate workflow-API ("project") through the Cloudgate MCP
-  (/mcp, streamable HTTP, Bearer auth). Use when the user asks to create a project,
-  add an endpoint/action, wire workflow nodes, clone a cookbook recipe, or publish
+  Build or edit a Cloudgate workflow-API ("controller") through the Cloudgate MCP
+  (/mcp, streamable HTTP, Bearer auth). Use when the user asks to create a controller,
+  add an action, wire workflow nodes, clone a cookbook recipe, or publish
   a Cloudgate API. Mirrors the backend CORE_SYSTEM_PRIMER.
 ---
 
-# Cloudgate project/workflow builder
+# Cloudgate controller/workflow builder
 
-Cloudgate APIs are workflow graphs: an endpoint (route + HTTP method) plus nodes,
-served at /prod|sbx/{projectPath}/{route}. Terminology: Project = Controller;
-Endpoint = Action = Workflow API; Action Logs = request logs (not definitions).
+Cloudgate APIs are workflow graphs: an action (route + HTTP method) plus nodes,
+served at /prod|sbx/{projectPath}/{route}. Terminology: surface these to users as
+**Controller** and **Action** (= Workflow API). The MCP tools and parameters still
+use the legacy names internally (e.g. `list_projects`, `create_endpoint`, `project_id`,
+`endpointId`) — keep calling them by those exact names. Action Logs = request logs
+(not definitions).
 
 ## Connection
 - MCP endpoint: the scoped route is best — `…/mcp/workflow` for build/edit work,
@@ -32,7 +35,7 @@ Endpoint = Action = Workflow API; Action Logs = request logs (not definitions).
 - Safe apply: dry_run=true → explain the diff → dry_run=false only after user confirms.
 - Mutating tools need Agent Edit permission; on agent_edit_required, switch to read-only.
 
-## Build a new project (happy path)
+## Build a new controller (happy path)
 1. list_projects — does the controller exist? If not, create_project.
 2. create_endpoint (or create_hello_world_get_endpoint to bootstrap).
 3. begin_workflow_edit, then add_*_workflow_node to wire request/function/database steps.
@@ -45,8 +48,8 @@ Endpoint = Action = Workflow API; Action Logs = request logs (not definitions).
   (dry_run first). Skip get_workflow_summary when templateEndpointId is returned.
 - Platform templates: list_platform_templates → get_platform_template → import_platform_template.
 
-## SQLite project databases
-Cloudgate stores project databases as SQLite files. Workflow **Database nodes** use
+## SQLite controller databases
+Cloudgate stores controller databases as SQLite files. Workflow **Database nodes** use
 `fileId` (not databaseId). Call `get_database_model` before your first DB mutation.
 
 1. `list_databases(project_id)` — see existing databases (id + fileId).
@@ -76,4 +79,4 @@ get_schedule_model, get_websocket_model, get_sample_request_model.
 - Re-read the workflow (get_workflow_summary / get_workflow_graph) and confirm the
   nodes and route match the request.
 - Confirm publish succeeded; do not claim success on a draft.
-- Report endpoint URL + any manual follow-ups (selectors, API keys, CORS).
+- Report action URL + any manual follow-ups (selectors, API keys, CORS).
