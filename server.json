@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.cloudgate/workflow",
+  "title": "Cloudgate Workflow",
+  "description": "Build and manage Cloudgate workflow-APIs from your MCP client — create projects, endpoints, workflow graphs, databases, and more.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/cloudgatedevs/mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.cloudgate.dev/mcp/workflow"
+    }
+  ]
+}
