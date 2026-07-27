@@ -1,19 +1,17 @@
 # cloudgate-builder (Cowork plugin)
 
-Bundles three things so Cowork can build Cloudgate workflow-APIs:
+Bundles two things so Cowork can build Cloudgate workflow-APIs:
 
 1. **MCP server `cloudgate`** (`.mcp.json`) — `mcp-remote` bridge to `/mcp/workflow`
    (controllers, actions, nodes, **SQLite databases**).
-2. **MCP server `cloudgate-data`** (`.mcp.json`) — same token, `/mcp/data`
-   (Data Tables + SQLite tools).
-3. **Skill `cloudgate-build`** (`skills/cloudgate-build/`) — the playbook that makes
+2. **Skill `cloudgate-build`** (`skills/cloudgate-build/`) — the playbook that makes
    Claude use the tools correctly (dry-run, begin_workflow_edit, validate, publish;
    never invent graph JSON). Mirrors the backend CORE_SYSTEM_PRIMER.
 
 ## Before you install — paste your token
-`.mcp.json` ships with a placeholder (or your dev token). Replace the Bearer value in
-**both** `cloudgate` and `cloudgate-data` with the token from `npm run mint`, then
-re-zip / re-package. Treat the packaged plugin as a secret — it contains standing access.
+`.mcp.json` ships with a placeholder (or your dev token). If you use a Bearer token
+instead of the OAuth bridge, replace the token in the `cloudgate` server entry with the
+token from `npm run mint`, then re-zip / re-package. Treat the packaged plugin as a secret — it contains standing access.
 
 Update the URL too if your `/mcp` isn't at the ngrok address shown.
 
