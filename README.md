@@ -32,11 +32,9 @@ claude plugin install cloudgate-builder@cloudgate-app-templates
 
 ### OpenAI Codex
 
-Add the remote server to `~/.codex/config.toml` (OAuth remote servers use Codex's RMCP client):
+Add the remote server to `~/.codex/config.toml`:
 
 ```toml
-experimental_use_rmcp_client = true
-
 [mcp_servers.cloudgate]
 url = "https://api.cloudgate.dev/mcp/workflow"
 ```
@@ -52,19 +50,10 @@ codex mcp login cloudgate
 Any client that supports **remote (streamable HTTP) MCP servers** can connect directly to
 `https://api.cloudgate.dev/mcp/workflow` and complete the OAuth sign-in.
 
-For clients that only support **stdio** servers, bridge to the remote endpoint with
-[`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
-
-```json
-{
-  "mcpServers": {
-    "cloudgate": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://api.cloudgate.dev/mcp/workflow"]
-    }
-  }
-}
-```
+The packaged plugin uses native HTTP and requires a client with remote MCP OAuth support.
+It does not launch Node.js or `mcp-remote`. The previously unpinned bridge could update
+independently of the plugin; version 0.10.0 drops the authorization callback issuer when
+calling its SDK. Do not replace this configuration with an unpinned bridge command.
 
 ## Authentication
 
